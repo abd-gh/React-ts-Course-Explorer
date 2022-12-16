@@ -1,0 +1,8 @@
+.sort-by__select{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 0.5rem;
+    width: 30%;
+    border: 1px solid #b7b7b7;
+}

@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import { useEffect, useState } from 'react';
+import { GoogleLogin } from '@react-oauth/google';
+import jwr_decode from 'jwt-decode';
+import { type } from '@testing-library/user-event/dist/type';
+import { UserContextProvider } from './components/login/UserContext';
+import { User } from './components/login/User';
+import { useContext } from "react";
+import { UserContext } from "./components/login/UserContext"
+
 function App() {
+
+  const userContext = useContext(UserContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div className='body'>
+      <div className='top'>
+        <h1 className='box-text'>Course Explorer - Qlue</h1>
+      </div>
+      <UserContextProvider>
+        <User />
+      </UserContextProvider>
     </div>
+
   );
 }
 
