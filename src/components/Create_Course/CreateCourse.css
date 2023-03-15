@@ -1,10 +1,25 @@
+
+  .show2{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr 2fr;
+    grid-template-rows: 2fr 2fr 2fr 5fr 2fr;
+    gap: 1rem;
+    max-height: 0;
+    opacity:  0 ;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition : all .8s ease-out,
+  }
+
 .Create-Course {
     margin: 2% 3%;
     display: grid;
     grid-template-columns: 0.5fr 2fr 0.5fr 2fr;
     grid-template-rows: 2fr 2fr 2fr 5fr 2fr;
     gap: 1rem;
-
+    max-height:100%;
+    opacity:  1 ;
+    transition : all .8s ease-out,   
     
 }
 .label {

@@ -33,7 +33,6 @@ const Rate = ({
     points: number,
     count: number
   ): Promise<void> => {
-    console.log("hello");
     await addDoc(CourseEvaluationCollectionRef, {
       Course_Id: id,
       Username: userContext.user?.name,
@@ -59,9 +58,7 @@ const Rate = ({
       Last_Review_Name: userContext.user?.name,
     };
     await updateDoc(courseDoc, newFields);
-    //setRateChange(oldKey => oldKey + 1);
     updateRate(1);
-    // done(rateChange);
   };
 
   return (
@@ -80,10 +77,10 @@ const Rate = ({
                 if (
                   window.confirm(
                     "Do you really want to evaluate a " +
-                      Name +
-                      " course with " +
-                      index +
-                      " stars?"
+                    Name +
+                    " course with " +
+                    index +
+                    " stars?"
                   )
                 ) {
                   addRating(index, id, Points, count);

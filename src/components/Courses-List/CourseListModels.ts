@@ -9,7 +9,7 @@ export interface Course {
     Points: number;
     count: number;
     supplier: string;
-    Course_length: string;
+    Course_length: number;
     Skills_Learned: string;
     Skills_Required: string;
     Description: string;

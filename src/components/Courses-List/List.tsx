@@ -15,12 +15,18 @@ const List = () => {
   //connection
   const coursesCollectionRef = collection(db, "Courses");
 
+  // When this value changes, the course list should refresh
+  const [listRefresh, setlistRefresh] = useState<number>(0);
+
   //Update Rate
-  const [rateChange, setRateChange] = useState<number>(0);
   const updateRate = (count: number): void => {
-    setRateChange((current) => current + count);
-    console.log(rateChange);
+    setlistRefresh((current) => current + count);
   };
+
+  //A new course has been added
+  const refreshList=(count:number):void=>{
+    setlistRefresh((current)=>current+count);
+  }
 
   useEffect(() => {
     const getCourses = async () => {
@@ -29,7 +35,7 @@ const List = () => {
       setOurCourses(courses as Course[]);
     };
     getCourses();
-  }, [rateChange, searchInput.searchWord, searchInput.sortType]);
+  }, [listRefresh, searchInput.searchWord, searchInput.sortType]);
 
   let SortedCourse = [...ourCourses].sort((a, b) => (a.Name > b.Name ? 1 : -1));
   if (searchInput.sortType === SortOptionsEnum.COURSE_SUPPLIER.toString()) {
@@ -40,7 +46,7 @@ const List = () => {
     SortedCourse = [...ourCourses].sort((a, b) =>
       a.Course_length > b.Course_length ? -1 : 1
     );
-  } else if (searchInput.sortType === SortOptionsEnum.LENGTH_DESC.toString()) {
+  } else if (searchInput.sortType === SortOptionsEnum.LENGTH_ASC.toString()) {
     SortedCourse = [...ourCourses].sort((a, b) =>
       a.Course_length > b.Course_length ? 1 : -1
     );
